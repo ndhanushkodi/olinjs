@@ -1,8 +1,24 @@
 <style>
+form{
+	padding-bottom: 30px;
+}
+
 
 </style>
 
 <h1>Ingredients</h1>
+
+<form id="new">
+	<h3>New Ingredient:</h3>
+	<br> 
+		Name: <input type="text" name="name">
+
+		Price: <input type="text" name="price">
+		<button>Submit</button>
+	</br>
+</form>
+
+<h3>Ingredients in Stock: </h3>
 <ul id="inStock">
 {{#each ingList}}
 	<form id=this._id>
@@ -10,7 +26,13 @@
 		Price: {{this.price}}
 		Stock:{{this.stock}}
 		</li>
+		<br>
+			<input type="text" name="name">
+			<button>Edit Name</button>
 
+			<input type="text" name="price">
+			<button>Edit Price</button>
+		</br>
 	</form>
 {{/each}}
 </ul>
