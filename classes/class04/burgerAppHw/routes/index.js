@@ -49,6 +49,18 @@ routes.ingredients = function(req,res){
 	});
 }
 
+routes.ingredientsOut = function(req,res){
+	var id = req.body.id;
+	console.log(id);
+	Ingredient.findOneAndRemove({"_id": id}, function(err, ingr){
+		if(err){
+			console.log("can't remove");
+		}
+		console.log(ingr);
+		res.json(ingr);
+	});
+}
+
 
 routes.order = function(req,res){
 	res.render("home");

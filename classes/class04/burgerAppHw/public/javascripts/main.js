@@ -1,14 +1,8 @@
 // var $form = $("#ajax-form");
 
-// var onSuccess = function(data, status) {
-//   var img = "<img src='"+data+"'/>";
-//   $("#result").html(img);
-// };
 
-// var onError = function(data, status) {
-//   console.log("status", status);
-//   console.log("error", data);
-// };
+
+
 
 // $form.submit(function(event) {
 //   event.preventDefault();
@@ -24,4 +18,34 @@
 //     .error(onError);
 // });
 
-var $form = $("#" + )
+
+var $form = $(".edit_form");
+
+
+// $form.val()
+// var id = $(this).attr("id");
+var onSuccessOut = function(data, status) {
+	// var img = "<img src='"+data+"'/>";
+	// $("#result").html(img);
+
+	$currentForm = $("#"+data._id);
+	$currentForm.remove();
+	console.log(data);
+};
+
+var onError = function(data, status) {
+	console.log("status", status);
+	console.log("error", data);
+};
+
+
+$form.submit(function outOfStock(event){
+	event.preventDefault();
+	var postData = {id:$(this).attr("id")};
+	$.post("ingredients", postData)
+		.done(onSuccessOut)
+		.error(onError);
+
+
+});
+//event.currentTarget ^^

@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", index.home);
 app.get("/add", index.add);
 app.get("/ingredients", index.ingredients);
+app.post("/ingredients", index.ingredientsOut);
 app.get("/order", index.order);
 
 
