@@ -2,8 +2,15 @@
 form{
 	padding-bottom: 30px;
 }
+ul
+{
+    list-style-type: none;
+}
 </style>
 
+<!-- <body background="http://www.themesltd.com/backgrounds/food/burgers_and_flowers.png"> -->
+
+	
 <h1>Ingredients</h1>
 
 <form id="new" class=new_form>
@@ -19,20 +26,24 @@ form{
 <h3>Ingredients in Stock: </h3>
 <ul id="inStock">
 {{#each ingList}}
+<li>
 	<form id={{this._id}} class=edit_form>
-		<li>Name: {{this.name}}
+		<span class="nameSpan">
+		Name: {{this.name}}
+		</span>
 		Price: {{this.price}}
 		Stock:{{this.stock}}
-		</li>
-		<br>
-			<input type="text" name="name">
-			<button id=this.name>Edit Name</button>
+		
+		
+			<input type="text" name="name" class="nameText">
+			<button class="editName">Edit Name</button>
 
-			<input type="text" name="price">
-			<button>Edit Price</button>
+			<input type="text" name="price" class="editText">
+			<button class="editPrice">Edit Price</button>
 
 			<input type="submit" value="Out of Stock">
-		</br>
+		
 	</form>
+</li>
 {{/each}}
 </ul>

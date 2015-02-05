@@ -7,7 +7,6 @@ routes.home = function(req, res){
 }
 
 routes.add = function(req,res){
-
 	var nIngredient1 = new Ingredient({name:'tomato',
 		price: 3.25,
 		stock: true});
@@ -39,8 +38,6 @@ routes.add = function(req,res){
 }
 
 routes.ingredients = function(req,res){
-	
-
 	Ingredient.find({stock:true},function(err, ingredients){
 		if(err){
 			console.log("No ingredients", err);
@@ -72,6 +69,24 @@ routes.ingredientsOut = function(req,res){
 			res.json(ing[0]);
 		});
 
+	});
+}
+
+routes.ingredientNewName = function(req,res){
+	var id = req.body.id;
+	var newName = req.body.name;
+
+	Ingredient.update({"_id": id}, {$set: {name: newName}}, function(err){
+		if(err){
+			console.log("can't update name");
+		}
+		Ingredient.find({"_id":id}, function(err, ing){
+			if(err){
+				console.log("can't find");
+			}
+			console.log(ing[0]);
+			res.json(ing[0]);
+		});
 	});
 
 }

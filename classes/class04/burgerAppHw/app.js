@@ -25,6 +25,7 @@ app.get("/", index.home);
 app.get("/add", index.add);
 app.get("/ingredients", index.ingredients);
 app.post("/ingredients", index.ingredientsOut);
+app.post("/newName", index.ingredientNewName);
 app.get("/order", index.order);
 
 
