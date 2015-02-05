@@ -30,6 +30,7 @@ var onSuccessOut = function(data, status) {
 
 	$currentForm = $("#"+data._id);
 	$currentForm.remove();
+	
 	console.log(data);
 };
 

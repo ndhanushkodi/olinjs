@@ -41,7 +41,7 @@ routes.add = function(req,res){
 routes.ingredients = function(req,res){
 	
 
-	Ingredient.find(function(err, ingredients){
+	Ingredient.find({stock:true},function(err, ingredients){
 		if(err){
 			console.log("No ingredients", err);
 		}
@@ -52,13 +52,28 @@ routes.ingredients = function(req,res){
 routes.ingredientsOut = function(req,res){
 	var id = req.body.id;
 	console.log(id);
-	Ingredient.findOneAndRemove({"_id": id}, function(err, ingr){
+	// Ingredient.findOneAndRemove({"_id": id}, function(err, ingr){
+	// 	if(err){
+	// 		console.log("can't remove");
+	// 	}
+	// 	console.log(ingr);
+	// 	res.json(ingr);
+	// });
+
+	Ingredient.update({"_id": id}, {$set: {stock: false}}, function(err, ingr){
 		if(err){
-			console.log("can't remove");
+			console.log("can't update");
 		}
-		console.log(ingr);
-		res.json(ingr);
+		Ingredient.find({"_id":id}, function(err, ing){
+			if(err){
+				console.log("can't find");
+			}
+			console.log(ing[0]);
+			res.json(ing[0]);
+		});
+
 	});
+
 }
 
 
