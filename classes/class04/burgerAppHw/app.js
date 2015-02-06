@@ -7,7 +7,7 @@ var exphbs  = require("express-handlebars");
 var mongoose = require("mongoose");
 
 var index = require("./routes/index");
-var getCat = require("./routes/getCat");
+
 
 var app = express();
 mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/test');
@@ -21,12 +21,21 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+
+//ROUTES!!!!!!!!!!!
 app.get("/", index.home);
 app.get("/add", index.add);
 app.get("/ingredients", index.ingredients);
 app.post("/ingredients", index.ingredientsOut);
 app.post("/newName", index.ingredientNewName);
+app.post("/newPrice", index.ingredientNewPrice);
+app.post("/addNew", index.newIngredient);
 app.get("/order", index.order);
+app.post("/check", index.buildCost);
+app.post("/newOrder", index.makeOrder);
+app.post("/delOrd", index.resolveOrder);
+
+app.get("/kitchen", index.kitchen);
 
 
 app.listen(process.env.PORT || PORT);

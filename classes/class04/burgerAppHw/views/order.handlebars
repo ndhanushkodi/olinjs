@@ -1,0 +1,27 @@
+<!-- <body background="http://www.themesltd.com/backgrounds/food/burgers_and_flowers.png"> -->
+
+<h1>Orders</h1>
+
+<form id="new" class="new_order">
+	<h3>Make a New Order:</h3>
+		{{#each ingListAll}}
+			
+			<input type="checkbox" class="checkbox"
+			id={{this._id}} name={{this.name}}
+			{{#unless this.stock}}
+				disabled
+			{{/unless}}
+			>
+
+			</input>{{this.name}}: <span class="price">${{this.price}}</span>
+		<br>
+
+		{{/each}}
+		<br>
+		Total Cost: $<span id="totalcost"> 0</span> <br> 
+		<br>
+		<span id="customer">
+			Name: <input type="text" id="customerName">
+		</span> <br><br>
+		<input type="submit" value="Submit Order">
+</form>
