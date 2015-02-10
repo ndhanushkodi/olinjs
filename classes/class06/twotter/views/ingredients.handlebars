@@ -1,0 +1,52 @@
+<style>
+form{
+	padding-bottom: 30px;
+}
+ul
+{
+    list-style-type: none;
+}
+</style>
+
+
+<body background="http://www.themesltd.com/backgrounds/food/burgers_and_flowers.png">
+
+	
+<h1>Ingredients</h1>
+
+<form id="new" class="new_form">
+	<h3>New Ingredient:</h3> <br></br>
+	 
+		Name: <input id="addName" type="text" name="name">
+
+		Price: <input id="addPrice" type="text" name="price">
+		<button>Submit</button>
+	
+</form>
+
+<h3>Ingredients in Stock: </h3>
+<ul id="inStock">
+{{#each ingList}}
+<li>
+	<form id={{this._id}} class="edit_form">
+		<span class="nameSpan">
+		Name: {{this.name}}
+		</span>
+		<span class="priceSpan">
+		Price: {{this.price}}
+		</span>
+		Stock:{{this.stock}}
+		
+		
+			<input type="text" name="name" class="nameText">
+			<button class="editName">Edit Name</button>
+
+			<input type="text" name="price" class="priceText">
+			<button class="editPrice">Edit Price</button>
+
+			<input type="submit" value="Out of Stock">
+		
+	</form>
+</li>
+{{/each}}
+</ul>
