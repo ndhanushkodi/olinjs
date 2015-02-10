@@ -33,4 +33,10 @@ app.get('/', function(req, res) {
 
 });
 
+app.get('/cookie', function(req, res) {
+    console.dir(req.cookies);
+
+    res.send('hello');
+});
+
 app.listen(3000);
