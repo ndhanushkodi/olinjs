@@ -1,0 +1,17 @@
+<body background="http://www.themesltd.com/backgrounds/food/burgers_and_flowers.png">
+<h1>Kitchen</h1>
+
+<form id="kitchen" class="kitchenOfOrders">
+	<h3>Pending Orders:</h3>
+	<ul>
+		{{#each orderList}}
+			<li id={{this._id}}>
+				Customer: {{this.customer}} <br>
+				Burger Ingredients: {{this.ingredientsListOut}}
+				<button class="removeOrder">Resolve</button>
+			</li>
+			
+			<br><br>
+		{{/each}}
+	</ul>
+</form>
