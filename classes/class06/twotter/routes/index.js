@@ -3,6 +3,10 @@ var routes = {};
 var User = require('./../models/userModel.js');
 
 
+routes.showLogin = function(req,res){
+	res.render("twoter");
+}
+
 routes.login = function(req, res){
 	console.dir(req.cookies);
 	console.dir(req.session);

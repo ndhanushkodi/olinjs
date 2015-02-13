@@ -7,22 +7,30 @@ var onError = function(data, status) {
 
 
 
-
-//HANDLING OUT OF STOCK
-var $form = $(".edit_form");
+//LOGGING IN
+var $loginform = $("#login");
 var onSuccessOut = function(data, status) {
-	$currentForm = $("#"+data._id);
-	$currentForm.remove();
-	console.log(data);
+	$('#new_username')
+	.not(':button, :submit, :reset, :hidden')
+	.val('')
+	.removeAttr('checked')
+	.removeAttr('selected');
 };
-
-$form.submit(function outOfStock(event){
+$loginform.submit(function login(event){
 	event.preventDefault();
-	var postData = {id:$(this).attr("id")};
+	var postData = {username: $('#new_username').val()};
 	$.post("ingredients", postData)
 		.done(onSuccessOut)
 		.error(onError);
 });
+
+// $loginform.submit(function login(event){
+// 	event.preventDefault();
+// 	var postData = {id:$(this).attr("id")};
+// 	$.post("ingredients", postData)
+// 		.done(onSuccessOut)
+// 		.error(onError);
+// });
 
 
 //RESOLVING AN ORDER

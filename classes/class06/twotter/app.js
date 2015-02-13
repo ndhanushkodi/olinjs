@@ -30,7 +30,7 @@ app.use(session({
 
 //ROUTES!!!!!!!!!!!
 // app.post("/delOrd", index.resolveOrder);
-app.get("/", index.login);
+app.get("/", index.showLogin);
 
 
 
