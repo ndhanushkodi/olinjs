@@ -31,6 +31,7 @@ app.use(session({
 //ROUTES!!!!!!!!!!!
 // app.post("/delOrd", index.resolveOrder);
 app.get("/", index.showLogin);
+app.post("/loggedIn", index.login);
 
 
 

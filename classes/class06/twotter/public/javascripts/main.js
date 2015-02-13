@@ -10,16 +10,20 @@ var onError = function(data, status) {
 //LOGGING IN
 var $loginform = $("#login");
 var onSuccessOut = function(data, status) {
+	console.log(data);
+	$('#welcome').replaceWith(data.name);
 	$('#new_username')
 	.not(':button, :submit, :reset, :hidden')
 	.val('')
 	.removeAttr('checked')
 	.removeAttr('selected');
+
 };
 $loginform.submit(function login(event){
 	event.preventDefault();
-	var postData = {username: $('#new_username').val()};
-	$.post("ingredients", postData)
+	console.log("hi");
+	var postData = {username: $('#username').val()};
+	$.post("loggedIn", postData)
 		.done(onSuccessOut)
 		.error(onError);
 });

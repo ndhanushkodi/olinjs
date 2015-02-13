@@ -29,3 +29,21 @@ input#new_username{
     padding-left:10px; 
     padding-right:10px;  
 }
+
+#wrap {
+	width:750px;
+	margin:0 auto;
+	background:#99c;
+}
+
+
+#main {
+	float:left;
+	width:500px;
+	background:#9c9;
+}
+#sidebar {
+	float:right;
+	width:250px;
+	background:#c9c;
+}

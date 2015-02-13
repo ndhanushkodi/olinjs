@@ -4,21 +4,39 @@ var User = require('./../models/userModel.js');
 
 
 routes.showLogin = function(req,res){
-	res.render("twoter");
+	res.render("twotter");
 }
 
 routes.login = function(req, res){
 	console.dir(req.cookies);
 	console.dir(req.session);
 	var message;
-	if (req.session.counter) {
-		req.session.counter++;
-		message = "Hello again! Thanks for visiting " + req.session.counter + " times";
-	} else {
-		message = "Hello, thanks for visiting this site!";
-		req.session.counter = 1;
-	}
-	res.send(message);
+	User.findOne({name: req.body.username}, function(err,user){
+		if(err){
+			res.status(500).json({error:'Something crashed while finding user'});
+		}
+		if(!user){
+			var newUser = new User({name:req.body.username,
+				twotes:[]});
+
+			newUser.save(function(err){
+				if(err){
+					res.status(500).json({error:'Something crashed while saving user'});
+				}
+				
+				
+				req.session.user = newUser;
+				res.json(newUser);
+				console.log(req.session.user);
+			});
+		}
+		else{
+			res.json(user);
+			req.session.user = user;
+			console.log(req.session.user);
+		}
+	});
+
 }
 
 
