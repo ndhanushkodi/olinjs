@@ -44,7 +44,7 @@ $users.click(function highlight(event){
 	}
 	console.log(name);
 	console.log($("." + name));
-	$("." + name).toggleClass('highlight');
+	$("." + name).parent().toggleClass('highlight');
 	$(this).toggleClass('highlight');
 
 	//$("#twote_user").toggleClass('highlight');
