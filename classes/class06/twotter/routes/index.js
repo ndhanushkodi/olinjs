@@ -1,22 +1,24 @@
 var mongoose = require('mongoose');
 var routes = {};
 var User = require('./../models/userModel.js');
+var Twote = require('./../models/twoteModel.js');
 
 
 routes.showLogin = function(req,res){
-	res.render("twotter");
+	res.render("login");
 }
 
 routes.login = function(req, res){
 	console.dir(req.cookies);
 	console.dir(req.session);
 	var message;
-	User.findOne({name: req.body.username}, function(err,user){
+
+	User.findOne({name: req.body.name}, function(err,user){
 		if(err){
 			res.status(500).json({error:'Something crashed while finding user'});
 		}
 		if(!user){
-			var newUser = new User({name:req.body.username,
+			var newUser = new User({name:req.body.name,
 				twotes:[]});
 
 			newUser.save(function(err){
@@ -24,19 +26,114 @@ routes.login = function(req, res){
 					res.status(500).json({error:'Something crashed while saving user'});
 				}
 				
-				
-				req.session.user = newUser;
-				res.json(newUser);
-				console.log(req.session.user);
+				else{
+					req.session.name = newUser;
+					req.session.save();
+					console.log('NEW USER ALERT');
+					console.log(newUser);
+					res.redirect('/main');
+					
+				}
 			});
 		}
 		else{
-			res.json(user);
-			req.session.user = user;
-			console.log(req.session.user);
+			
+			req.session.name = user;
+			req.session.save();
+			console.log(user);
+			res.redirect('/main');
 		}
+		//res.redirect("/main");
 	});
 
+}
+
+
+routes.ingredientNewName = function(req,res){
+	var id = req.body.id;
+	var newName = req.body.name;
+
+	Ingredient.update({"_id": id}, {$set: {name: newName}}, function(err){
+		if(err){
+			console.log("can't update name");
+		}
+		Ingredient.find({"_id":id}, function(err, ing){
+			if(err){
+				console.log("can't find");
+			}
+			console.log(ing[0]);
+			res.json(ing[0]);
+		});
+	});
+
+}
+
+
+
+routes.newTwote = function(req,res){
+	var text = req.body.text;
+	var name = req.body.name;
+
+	var newTwote = new Twote({user:name, text:text});
+
+	newTwote.save(function(err){
+		if(err){
+			res.status(500).json({error:'Something crashed while saving twote'});
+		}
+		
+		User.findOne({name:name}, function(err,user){
+			if(err){
+				res.status(500).json({error:'Something crashed while finding user'});	
+			}
+			var twotesArr = user.twotes;
+			twotesArr.push(newTwote);
+
+			User.update({name:name}, {$set:{twotes:twotesArr}}, function(err){
+				if(err){
+					res.status(500).json({error:'Something crashed while finding user'});	
+				}
+
+				console.log(user.twotes);
+				res.json(newTwote);
+
+			});
+			
+		});
+		
+
+	});
+
+}
+
+//render_info has users, loggedInUser, twotes
+routes.twotter = function(req,res){
+	var render_info = {}
+	render_info.loggedInUser = req.session.name;
+	console.log("LOGGED IN USERR");
+	console.log(render_info.loggedInUser);
+	User.find({}, function(err,users){
+		if(err){
+			res.status(500).json({error:'Something crashed while finding user'});
+		}
+		render_info.users=users;
+		//console.log(render_info.users);
+
+		Twote.find({}, function(err, twotes){
+			if(err){
+				res.status(500).json({error:'Something crashed while finding user'});
+			}
+			render_info.twotes=twotes;
+			res.render("twotter", render_info);
+		})
+
+		
+	});
+	
+
+
+	
+	//console.log(req.session.user)
+	
 }
 
 

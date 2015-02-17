@@ -5,28 +5,71 @@ var onError = function(data, status) {
 	console.log("error", data);
 };
 
-
-
-//LOGGING IN
-var $loginform = $("#login");
-var onSuccessOut = function(data, status) {
-	console.log(data);
-	$('#welcome').replaceWith(data.name);
-	$('#new_username')
-	.not(':button, :submit, :reset, :hidden')
-	.val('')
-	.removeAttr('checked')
-	.removeAttr('selected');
-
-};
-$loginform.submit(function login(event){
+//MAKING A TWOTE
+var $newForm = $("#new_tool");
+$newForm.submit(function newTwote(event){
 	event.preventDefault();
-	console.log("hi");
-	var postData = {username: $('#username').val()};
-	$.post("loggedIn", postData)
-		.done(onSuccessOut)
+	var postData = {text:$("#twote_text").val(), 
+					name:$(".loggedInUser").attr("name")};
+	console.log(postData);
+
+	$.post("newTwote", postData)
+		.done(onSuccessNewTwote)
 		.error(onError);
 });
+var onSuccessNewTwote = function(data, status){
+	//make new twote appear
+	console.log("making twote");
+	var twote_disp = Handlebars.templates['twote_disp'];
+	console.log(twote_disp(data));
+	$('.twotesl').prepend(twote_disp(data));
+	//$('#twote_user').prepend(twote_disp(data.user));
+
+}; 
+
+var $users = $('.users');
+// var id = $('.users').attr('id').toString();
+// var $userHighlight = $("#"+id);
+// console.log($userHighlight);
+$users.click(function highlight(event){
+	event.preventDefault();
+	// console.log($(this).attr("twotes"));
+	// var twotes = $(this).attr('id');
+	// for(i=0; i< twotes.length; i++){
+	// 	console.log(typeof(twotes[i]));
+	// }
+
+	console.log($('.twote_user').attr("id"));
+	// var postData = {clickedUserId: $(this).attr('id')};
+	
+	//$.post("highlight", postDat)
+
+});
+
+//LOGGING IN
+// var $loginform = $("#login");
+// var onSuccessOut = function(data, status) {
+
+// 	console.log($('div'));
+
+// 	$('#welcome').html(data.name);
+// 	$('#username')
+// 	.not(':button, :submit, :reset, :hidden')
+// 	.val('')
+// 	.removeAttr('checked')
+// 	.removeAttr('selected');
+
+
+// };
+// $loginform.submit(function login(event){
+// 	event.preventDefault();
+// 	console.log($('#username').val());
+// 	var postData = {username: $('#username').val()};
+	
+// 	$.post("login", postData)
+// 		.done(onSuccessOut)
+// 		.error(onError);
+// });
 
 // $loginform.submit(function login(event){
 // 	event.preventDefault();

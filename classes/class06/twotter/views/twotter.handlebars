@@ -1,11 +1,6 @@
 <link href="stylesheets/twotter.css" rel="stylesheet" type="text/css">
 
-<form id="login">
-		<input id="username" type="text" name="name">
-
-		<input id="submit_login" type="submit" value="Login">
-	
-</form>
+<button id = 'logout'>Logout</button>
 
 <div id="wrap">
 	<div id="header"><h1 id="welcome"></h1></div>
@@ -17,15 +12,36 @@
 	</div> -->
 	<div id="main">
 		<h2>Column 1</h2>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
+		{{#if loggedInUser}}
+		<form id="new_tool">
+			<input class="loggedInUser" type='hidden' name='{{loggedInUser.name}}'>
+			<input id="twote_text" type="text"> <br>
+			<input id="submit_twote" type="submit" 
+			value="Twote"> <br>
+		</form>
+		{{/if}}
+		<br>
+		<div class='list_of_twotes'>
+			<ul style='list-style-type:none' class="twotesl">
+			{{#each twotes}}
+				{{> twote_disp}}
+			{{/each}}
+		</ul>
+		</div>
+
+
 	</div>
 	<div id="sidebar">
-		<h2>Column 2</h2>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
-		<ul>
-			<li><a href="#">Link 1</a></li>
-			<li><a href="#">Link 2</a></li>
-			...
+		<h2>Users</h2>
+		<h3>Welcome {{loggedInUser.name}}</h3>
+		<ul style='list-style-type:none'>
+			{{#each users}}
+			<li id='{{this._id}}' class="users" twotes='{{this.twotes}}'>
+				{{this.name}}
+
+			</li>
+<!-- 			<li><a href="#">Link 2</a></li> -->
+			{{/each}}
 		</ul>
 	</div>
 

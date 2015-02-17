@@ -1,49 +1,100 @@
+li.users{
+	padding-top: 10px;
+	padding-left: 30px;
+	padding-bottom:10px;
+	background:#c9c;
+  	background: rgb(34,34,34); /* for IE */
+  	background: rgba(255,255,255,0.35);
 
-/*http://www.graemeboy.com/css-buttons
-cool styling for buttons
-*/
-input#submit_login{
-	background-color:#33AD5C;
-	color:#fff;
-	font-family:'Helvetica Neue',sans-serif;
-	font-size:15px;
-	line-height:0px;
-	border-radius:20px;
-	-webkit-border-radius:20px;
-	-moz-border-radius:20px;
-	border:0;
-	text-shadow:#C17C3A 0 -1px 0;
-	width:70px;
-	height:25px
+  	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
 }
 
-/*http://html-generator.weebly.com/css-textbox-style.html*/
-input#new_username{
-    border: 1px solid #848484; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
-    outline:0; 
-    height:20px; 
-    width: 150px; 
-    padding-left:10px; 
-    padding-right:10px;  
+
+li.twotes{
+
+	float:center;
+	margin-top:10px;
+	padding-top: 10px;
+	padding-left: 30px;
+	padding-bottom:10px;
+	background:#c9c;
+  	background: rgb(34,34,34); /* for IE */
+  	background: rgba(255,255,255,0.35);
+
+  	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+}
+input#twote_text{
+	width:560px;
+}
+input#submit_twote{
+	float:right;
+	margin-top: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+h2{
+	text-align:center;
+	/*padding-right: 40px;*/
+}
+h3{
+	text-align:center;
+	/*padding-right: 40px;*/
+}
+
+li:hover {
+	background: #eee;
+	cursor: pointer;
 }
 
 #wrap {
-	width:750px;
+	width:940px;
 	margin:0 auto;
 	background:#99c;
+	font-family: Tahoma, Geneva, sans-serif;
 }
 
 
 #main {
 	float:left;
-	width:500px;
-	background:#9c9;
+	width:530px;
+	/*background:#9c9;*/
+	background: rgb(34,34,34); /* for IE */
+  	background: rgba(255,255,255,0.35);
+	padding-left: 40px;
+	padding-right:70px;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	padding-bottom: 40px;
 }
+
+/*http://jordanhollinger.com/2014/01/29/
+css-gaussian-blur-behind-a-translucent-box/*/
 #sidebar {
 	float:right;
 	width:250px;
-	background:#c9c;
+	padding-right: 40px;
+	padding-bottom: 20px;
+	/*margin-right: 40px;*/
+
+	/*background:#c9c;*/
+
+  	background: rgb(34,34,34); /* for IE */
+  	background: rgba(255,255,255,0.35);
+	border-radius:20px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+}
+
+html { 
+  background: url(https://chemtrailsnorthnz.files.wordpress.com/2010/03/dsc00637.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

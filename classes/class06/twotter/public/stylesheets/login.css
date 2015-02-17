@@ -1,0 +1,31 @@
+
+/*http://www.graemeboy.com/css-buttons
+cool styling for buttons
+*/
+input#submit_login{
+	background-color:#33AD5C;
+	color:#fff;
+	font-family:'Helvetica Neue',sans-serif;
+	font-size:15px;
+	line-height:0px;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	border:0;
+	text-shadow:#C17C3A 0 -1px 0;
+	width:70px;
+	height:25px
+}
+
+/*http://html-generator.weebly.com/css-textbox-style.html*/
+input#username{
+    border: 1px solid #848484; 
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px; 
+    outline:0; 
+    height:20px; 
+    width: 150px; 
+    padding-left:10px; 
+    padding-right:10px;  
+}

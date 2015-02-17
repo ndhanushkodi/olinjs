@@ -31,8 +31,9 @@ app.use(session({
 //ROUTES!!!!!!!!!!!
 // app.post("/delOrd", index.resolveOrder);
 app.get("/", index.showLogin);
-app.post("/loggedIn", index.login);
-
+app.post("/login", index.login);
+app.get("/main", index.twotter);
+app.post("/newTwote", index.newTwote);
 
 
 app.listen(process.env.PORT || PORT);
