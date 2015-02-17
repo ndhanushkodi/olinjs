@@ -35,11 +35,28 @@ $users.click(function highlight(event){
 	event.preventDefault();
 	// console.log($(this).attr("twotes"));
 	// var twotes = $(this).attr('id');
-	// for(i=0; i< twotes.length; i++){
-	// 	console.log(typeof(twotes[i]));
+	//var $twotesUsers = $('.twote_user');
+
+
+	var name = undefined;
+	for(i=0;i< $users.length; i++){
+		name = $(this).attr('id');
+	}
+	console.log(name);
+	console.log($("." + name));
+	$("." + name).toggleClass('highlight');
+	$(this).toggleClass('highlight');
+
+	//$("#twote_user").toggleClass('highlight');
+
+	// console.log(id);
+	// var id = $("#twote_user").attr("id")
+	// $("." + id).toggleClass('highlight');
+
+	// for(i=0; i< $twotesUsers.length; i++){
+	// 	console.log($($twotesUsers[i]).attr('id'));
 	// }
 
-	console.log($('.twote_user').attr("id"));
 	// var postData = {clickedUserId: $(this).attr('id')};
 	
 	//$.post("highlight", postDat)

@@ -29,12 +29,29 @@ li.twotes{
 }
 input#twote_text{
 	width:560px;
+	height:30px;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
 }
 input#submit_twote{
 	float:right;
 	margin-top: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+
+	background-color:#33AD5C;
+	color:#fff;
+	font-family:'Helvetica Neue',sans-serif;
+	font-size:15px;
+	line-height:0px;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	border:0;
+	text-shadow:#C17C3A 0 -1px 0;
+	width:70px;
+	height:25px;
 }
 
 h2{
@@ -97,4 +114,9 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.highlight{
+	background: #aaa;
+	text-align:center;
 }

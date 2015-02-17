@@ -11,7 +11,7 @@
 		</ul>
 	</div> -->
 	<div id="main">
-		<h2>Column 1</h2>
+		<h2>Twotter</h2>
 		{{#if loggedInUser}}
 		<form id="new_tool">
 			<input class="loggedInUser" type='hidden' name='{{loggedInUser.name}}'>
@@ -36,7 +36,7 @@
 		<h3>Welcome {{loggedInUser.name}}</h3>
 		<ul style='list-style-type:none'>
 			{{#each users}}
-			<li id='{{this._id}}' class="users" twotes='{{this.twotes}}'>
+			<li id='{{this.name}}' class="users">
 				{{this.name}}
 
 			</li>

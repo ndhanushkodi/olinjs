@@ -129,7 +129,7 @@ routes.twotter = function(req,res){
 		
 	});
 	
-
+	//, {sort:{"_id":1}},
 
 	
 	//console.log(req.session.user)

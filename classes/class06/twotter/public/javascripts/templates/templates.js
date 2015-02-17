@@ -7,7 +7,7 @@ templates['twote_disp'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":func
     + alias2(alias1((depth0 != null ? depth0._id : depth0), depth0))
     + "' class=\"twotes\">\n			<div id=\"twote\">"
     + alias2(alias1((depth0 != null ? depth0.text : depth0), depth0))
-    + "</div> \n			<div class=\"twote_user\" id=\""
+    + "</div> \n			<div class=\"twote_user\" class=\""
     + alias2(alias1((depth0 != null ? depth0.user : depth0), depth0))
     + "\">-"
     + alias2(alias1((depth0 != null ? depth0.user : depth0), depth0))
