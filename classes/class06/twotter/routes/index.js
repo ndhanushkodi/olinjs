@@ -4,6 +4,7 @@ var User = require('./../models/userModel.js');
 var Twote = require('./../models/twoteModel.js');
 
 
+
 routes.showLogin = function(req,res){
 	res.render("login");
 }
@@ -12,13 +13,15 @@ routes.login = function(req, res){
 	console.dir(req.cookies);
 	console.dir(req.session);
 	var message;
-
-	User.findOne({name: req.body.name}, function(err,user){
+	console.log(req.user._json.first_name);
+	console.log(req.isAuthenticated());
+	var firstName= req.user._json.first_name;
+	User.findOne({name: firstName}, function(err,user){
 		if(err){
 			res.status(500).json({error:'Something crashed while finding user'});
 		}
 		if(!user){
-			var newUser = new User({name:req.body.name,
+			var newUser = new User({name:firstName,
 				twotes:[]});
 
 			newUser.save(function(err){
@@ -28,10 +31,12 @@ routes.login = function(req, res){
 				
 				else{
 					req.session.name = newUser;
-					req.session.save();
-					console.log('NEW USER ALERT');
-					console.log(newUser);
-					res.redirect('/main');
+					req.session.save(function(){
+						console.log('NEW USER ALERT');
+						console.log(newUser);
+						res.redirect('/');
+					});
+					
 					
 				}
 			});
@@ -39,11 +44,15 @@ routes.login = function(req, res){
 		else{
 			
 			req.session.name = user;
-			req.session.save();
-			console.log(user);
-			res.redirect('/main');
+			req.session.save(function(){
+				console.log("existing user");
+				console.log(user);
+				console.log(req.user);
+				res.redirect('/');
+			});
+			
 		}
-		//res.redirect("/main");
+		
 	});
 
 }
@@ -68,7 +77,7 @@ routes.ingredientNewName = function(req,res){
 
 }
 
-
+//add twotes
 
 routes.newTwote = function(req,res){
 	var text = req.body.text;
